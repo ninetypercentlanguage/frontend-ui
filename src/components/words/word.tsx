@@ -1,26 +1,4 @@
-import { stringify } from 'querystring'
-import React from 'react'
-import { Interface } from 'readline'
-
-interface ILemma {
-    word: string;
-    definitions: string[]
-}
-
-interface IPartOfSpeech {
-    part_of_speech: string;
-    lemmas: ILemma[]
-}
-
-interface IWord {
-    word: string
-    parts_of_speech: IPartOfSpeech[]
-}
-
-interface IProps {
-    words: IWord[]
-}
-
+import './index.css'
 // {
 //     word: 'a'
 //     parts_of_speech: [
@@ -32,9 +10,26 @@ interface IProps {
 //     ]
 // }
 
+interface ILemma {
+    word: string;
+    definitions: string[]
+}
+
+export interface IPartOfSpeech {
+    part_of_speech: string;
+    lemmas: ILemma[]
+}
+
+export interface IWord {
+    word: string
+    parts_of_speech: IPartOfSpeech[]
+}
+
+export type OnClickPartOfSpeech = (partOfSpeech: IPartOfSpeech, word: IWord) => any;
+
 const PartOfSpeech = (pos: IPartOfSpeech) => {
     return (
-        <div>
+        <div className="part-of-speech">
             <h5>{pos.part_of_speech}</h5>
             {pos.lemmas.map(l => (
                 <div>
@@ -45,19 +40,17 @@ const PartOfSpeech = (pos: IPartOfSpeech) => {
     )
 }
 
-const Word = (word: IWord) => {
-    return (
-        <div style={{marginLeft: "1rem"}}>
-            <h4>{word.word}</h4>
-            <div style={{marginLeft: "3rem"}}>{word.parts_of_speech.map(PartOfSpeech)}</div>
-        </div>
-    )
+interface IProps {
+    word: IWord;
+    onClickPartOfSpeech: OnClickPartOfSpeech;
 }
 
-export const Words = (props: IProps) => {
+export const Word = (props: IProps) => {
+    const { word, onClickPartOfSpeech } = props;
     return (
-        <div>
-            {props.words.map(Word)}
+        <div className="word">
+            <h4>{word.word}</h4>
+            <div style={{marginLeft: "3rem"}}>{word.parts_of_speech.map(PartOfSpeech)}</div>
         </div>
     )
 }

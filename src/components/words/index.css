@@ -1,0 +1,17 @@
+.words {
+    padding: 1rem;
+}
+
+.word {
+    border-top: 1px dotted rgb(142, 186, 216);
+    padding-left: 1rem;
+    margin-bottom: 0.1rem;
+}
+
+.part-of-speech {
+    padding: 0.3rem;
+    cursor: pointer;
+}
+.part-of-speech:hover {
+    background: rgb(142, 186, 216, 0.5);
+}
