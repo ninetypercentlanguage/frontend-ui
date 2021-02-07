@@ -10,9 +10,10 @@ export const KnownWords = () => {
     const [words, setWords] = useState([])
 
     const hitApi = useCallback(debouncer(val => {
-        setWords([])
         if (val.length > 0) {
-            api.searchWord(val).then(setWords)
+            api.searchWord(val).then(setWords).catch(console.log)
+        } else {
+            setWords([])
         }
     }, 200), [])
     const onSearch = useCallback(async val => {
