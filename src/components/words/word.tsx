@@ -33,7 +33,7 @@ const PartOfSpeech = (pos: IPartOfSpeech) => {
             <h5>{pos.part_of_speech}</h5>
             {pos.lemmas.map(l => (
                 <div>
-                    form of <span style={{fontWeight: 800, color: "#474747", fontStyle: "italic"}}>{l.word}</span> | {l.definitions.join(", ")}
+                    form of <span style={{fontWeight: 800, color: "#474747", fontStyle: "italic"}}>{l.word}</span> | {l.definitions}
                 </div>
             ))}
         </div>
