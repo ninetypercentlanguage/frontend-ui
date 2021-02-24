@@ -12,6 +12,16 @@
     padding: 0.3rem;
     cursor: pointer;
 }
+
+.known {
+    background-color: lightgray;
+    cursor: default;
+}
+
 .part-of-speech:hover {
     background: rgb(142, 186, 216, 0.5);
+}
+
+.known:hover {
+    background: lightgray;
 }
